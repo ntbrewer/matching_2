@@ -1,0 +1,80 @@
+%loc	type	subtype	n	ord	thresh	pol0	pol1	pol2
+1	mtas	C1F	1	2	0	0	1	0
+2	mtas	C1B	1	2	0	0	1	0
+3	mtas	C2F	1	2	0	0	1	0
+4	mtas	C2B	1	2	0	0	1	0
+5	mtas	C3F	1	2	0	0	1   0
+6	mtas	C3B	1	2	0	0	1   0
+7	mtas	C4F	1	2	0	0	1   0
+8	mtas	C4B	1	2	0	0	1   0
+9	mtas	C5F	1	2	0	0	1   0
+10	mtas	C5B	1	2	0	0	1   0
+11	mtas	C6F	1	2	0	0	1   0
+12	mtas	C6B	1	2	0	0	1   0
+13	mtas	I1F	1	2	0	0	1   0
+14	mtas	I1B	1	2	0	0	1   0
+15	mtas	I2F	1	2	0	0	1   0
+16	mtas	I2B	1	2	0	0	1   0
+17	mtas	I3F	1	2	0	0	1   0
+18	mtas	I3B	1	2	0	0	1   0
+19	mtas	I4F	1	2	0	0	1   0
+20	mtas	I4B	1	2	0	0	1   0
+21	mtas	I5F	1	2	0	0	1   0
+22	mtas	I5B	1	2	0	0	1   0
+23	mtas	I6F	1	2	0	0	1   0
+24	mtas	I6B	1	2	0	0	1   0
+25	mtas	M1F	1	2	0	0	1   0
+26	mtas	M1B	1	2	0	0	1   0
+27	mtas	M2F	1	2	0	0	1   0
+28	mtas	M2B	1	2	0	0	1   0
+29	mtas	M3F	1	2	0	0	1   0
+30	mtas	M3B	1	2	0	0	1   0
+31	mtas	M4F	1	2	0	0	1   0
+32	mtas	M4B	1	2	0	0	1   0
+33	mtas	M5F	1	2	0	0	1   0
+34	mtas	M5B	1	2	0	0	1   0
+35	mtas	M6F	1	2	0	0	1   0
+36	mtas	M6B	1	2	0	0	1   0
+37	mtas	O1F	1	2	0	0	1   0
+38	mtas	O1B	1	2	0	0	1   0
+39	mtas	O2F	1	2	0	0	1   0
+40	mtas	O2B	1	2	0	0	1   0
+41	mtas	O3F	1	2	0	0	1   0
+42	mtas	O3B	1	2	0	0	1   0
+43	mtas	O4F	1	2	0	0	1   0
+44	mtas	O4B	1	2	0	0	1   0
+45	mtas	O5F	1	2	0	0	1   0
+46	mtas	O5B	1	2	0	0	1   0
+47	mtas	O6F	1	2	0	0	1   0
+48	mtas	O6B	1	2	0	0	1   0
+49	sili	S1T	1	2	0	-46.7	2.8515	0
+50	sili	S2T	1	2	0	-46.7	2.8515	0
+51	sili	S3T	1	2	0	-46.7	2.8515	0
+52	sili	S4T	1	2	0	-46.7	2.8515	0
+53	sili	S5T	1	2	0	-46.7	2.8515	0
+54	sili	S6T	1	2	0	-46.7	2.8515	0
+55	sili	S7T	1	2	0	-46.7	2.8515	0
+56	sili	S1B	1	2	0	-46.7	2.8515	0
+57	sili	S2B	1	2	0	-46.7	2.8515	0
+58	sili	S3B	1	2	0	-46.7	2.8515	0
+59	sili	S4B	1	2	0	-46.7	2.8515	0
+60	sili	S5B	1	2	0	-46.7	2.8515	0
+61	sili	S6B	1	2	0	-46.7	2.8515	0
+62	sili	S7B	1	2	0	-46.7	2.8515	0
+63	therm	T1H 	1	2	0	0	0.5	0
+64	logi	IRU	1	1	0	0	1	
+65	logi	IRD	1	1	0	0	1	
+66	logi	LPU	1	1	0	0	0.2	
+67	logi	LPD	1	1	0	0	0.2	
+68	logi	TMU	1	1	0	0	0.2	
+69	logi	TMD	1	1	0	0	0.2	
+70	logi	BGU	1	1	0	0	0.2	
+71	logi	BGD	1	1	0	0	0.2	
+72	logi	MSU	1	1	0	0	0.2	
+73	logi	MSD	1	1	0	0	0.2	
+74	logi	stop	1	2	0	0	0.2	0
+75	mtas	P1F	1	2	0	0	1.0 	0	
+76	sili	S1H	1	2	0	0	0.5 	0
+77	refmod	ref	1	2	0	0	0.1	0	
+78	sili	SK1	1	2	0	0	6.5266  0
+79 	sili    SK2 	1   	2   	0   	0   	11.7675 0

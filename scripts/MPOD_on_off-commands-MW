@@ -1,0 +1,27 @@
+
+# After Computer restart and before MPOD turned on.
+
+#to turn on ethernet port so can talk to MPOD at all:
+sudo NetworkManager 192.168.13.237 #may be necessary first.
+sudo ifup eth1
+
+ppath=/usr/share/snmp/mibs
+ip=192.168.13.237
+
+ MPOD ON
+snmpset  -v 2c -M $ppath -m +WIENER-CRATE-MIB -c private $ip sysMainSwitch.0 i 1
+
+  MPOD OFF
+snmpset  -v 2c -M $ppath -m +WIENER-CRATE-MIB -c private $ip sysMainSwitch.0 i 0
+
+ HV off
+./HV_MTAS_ALL.sh Off
+
+ HV on
+./HV_MTAS_ALL.sh On
+
+ HV single 
+./HV_MTAS_SET_ONE.sh u205 on 800
+
+
+ouf /home/pixie16/pixie_scan_mtas/pixie_scan_mtas/mtas-Mn-30Mar-b.ldf
