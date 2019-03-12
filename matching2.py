@@ -48,7 +48,7 @@ for i in channels:
 hvmap=dict()
 lines = np.genfromtxt('hvmap.csv',(np.character,int),delimiter=' , ')
 for i in lines:
-    hvmap[i[1].decode()]=i[0].decode()
+    hvmap[i[1].decode()]={'id':i[0].decode(),'val':10}
        
 ####################################################
 
@@ -93,7 +93,7 @@ def close_pixie(pixie):
     pixie.close()
        
 def get_voltage(mtasid):
-    return(eval(pxp.run('snmpget -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputVoltage.'+hvmap[repr(mtasid+100)]).decode().split('\r\n')[0]))
+    return(eval(pxp.run('snmpget -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputVoltage.'+hvmap[repr(mtasid+100)]['id']).decode().split('\r\n')[0]))
 
 def set_voltage(mtasid,volts):
     if mtasid<12:
@@ -105,15 +105,15 @@ def set_voltage(mtasid,volts):
             print('IMO HV too high')
             return(False)
     #pxp.time.sleep(1)
-    return(eval(pxp.run('snmpset -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputVoltage.'+hvmap[str(mtasid+100)]+' F '+str(volts))))
+    return(eval(pxp.run('snmpset -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputVoltage.'+hvmap[str(mtasid+100)]['id']+' F '+str(volts))))
 
 def set_all_on_off(onOff):
     for mtasid in range(0,48):
-        print(pxp.run('snmpset -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputSwitch.'+hvmap[str(mtasid+100)]+' i '+str(onOff)))
+        print(pxp.run('snmpset -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputSwitch.'+hvmap[str(mtasid+100)]['id']+' i '+str(onOff)))
     
 def set_rise_rate_all(rate):
     for mtasid in range(0,48,16):
-        print(eval(pxp.run('snmpset -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputVoltageRiseRate.'+hvmap[str(mtasid+100)]+' F '+str(rate))))
+        print(eval(pxp.run('snmpset -OqvU -v 2c -M /usr/share/snmp/mibs -m +WIENER-CRATE-MIB -c guru 192.168.13.237 outputVoltageRiseRate.'+hvmap[str(mtasid+100)]['id']+' F '+str(rate))))
 
 def set_dv(mtasid,dvolts):
     print(set_voltage(mtasid,get_voltage(mtasid)+dvolts))
@@ -131,13 +131,13 @@ def close_damm(damm):
 def zero_his(mtasid,damm):
     damm.sendline('z '+repr(mtasid))    
     
-def write_out_HV(filename='hv_mtas.dat'):
+def write_out_HV(filename='dat_files/hv_mtas.dat'):
     ouf = open(filename,'w')
     for i in channels:
         ouf.write(str(i)+' , '+repr(get_voltage(i-100))+'\n')
     ouf.close()
     
-def read_in_HV(filename='hv_mtas.dat'):
+def read_in_HV(filename='dat_files/hv_mtas.dat'):
     inf = open(filename,'r')
     lines = inf.readlines()
     hv_array =[]
@@ -150,16 +150,16 @@ def set_HV_from_read(hv_array):
         print('Setting... ')
         print(set_voltage(i[0]-100,i[1]))
 
-#def interpolate(dict,id):
+#def interpolate(dic,id):
 
-def dict_add(id,dict,volt,pk):
-    diff = (dict[repr(id)][1]-volt)/(dict[repr(id)][2]-pk)
-    dict[repr(id)][1]=volt
-    dict[repr(id)][2]=pk
-    n=dict[repr(id)][3]
+def dict_add(id,dic,volt,pk):
+    diff = (dic[repr(id)][1]-volt)/(dic[repr(id)][2]-pk)
+    dic[repr(id)][1]=volt
+    dic[repr(id)][2]=pk
+    n=dic[repr(id)][3]
     if (n!=0):
-        dict[repr(id)][0]=dict[repr(id)][0]*n/(n+1)+diff/(n+1)
-    dict[repr(id)][3]+=1
+        dic[repr(id)][0]=dic[repr(id)][0]*n/(n+1)+diff/(n+1)
+    dic[repr(id)][3]+=1
 
 
 
